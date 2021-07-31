@@ -12,14 +12,15 @@ node ('master'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("fivebird/snake")
+        app = docker.build("fivebird/snake:latest")
     }
+    
     stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
             app.push("latest")
         			}
-         }
+    }
     /*stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
     }*/
@@ -29,7 +30,7 @@ node ('master'){
     
          sh "docker-compose down"
          sh "docker-compose up -d"	
-      }
+    }
     
     /*stage('DAST')
         {
