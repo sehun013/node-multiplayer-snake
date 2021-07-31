@@ -17,7 +17,7 @@ node ('master'){
     
     stage('Post-to-dockerhub') {
     
-     docker.withRegistry('https://registry.hub.docker.com', 'sehun013') {
+     docker.withRegistry('https://registry.hub.docker.com', 'github-snake') {
             app.push("latest")
         			}
     }
