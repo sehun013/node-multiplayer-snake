@@ -18,7 +18,7 @@ node ('master'){
     stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com') {
-            app.push("fivebird/snake:latest")
+            app.push("latest")
         			}
     }
     /*stage('SECURITY-IMAGE-SCANNER'){
