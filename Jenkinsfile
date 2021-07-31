@@ -12,12 +12,12 @@ node ('master'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("fivebird/snake:latest", 'sehun013')
+        app = docker.build("fivebird/snake:latest")
     }
     
     stage('Post-to-dockerhub') {
     
-     docker.withRegistry('https://registry.hub.docker.com') {
+     docker.withRegistry('https://registry.hub.docker.com', 'sehun013') {
             app.push("latest")
         			}
     }
