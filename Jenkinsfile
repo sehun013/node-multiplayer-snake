@@ -12,7 +12,7 @@ node ('master'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("fivebird/snake:latest")
+        app = docker.build("fivebird/snake:latest", 'sehun013')
     }
     
     stage('Post-to-dockerhub') {
