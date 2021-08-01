@@ -1,6 +1,6 @@
 node ('agent1'){  
     def app
-    
+    stages{
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
@@ -32,7 +32,7 @@ node ('agent1'){
     stage('Pull-image-server') {
         sh "docker-compose -f ~/app/node-multiplayer-snake/docker-compose.yml up -d"	
     }
-    
+    }
     /*stage('DAST')
         {
         build 'SECURITY-DAST-OWASP_ZAP'
