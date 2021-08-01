@@ -28,8 +28,7 @@ node ('agent1'){
   
     
     stage('Pull-image-server') {
-        sh "docker-compose -f docker-compose.yml down"
-        sh "docker-compose -f docker-compose.yml up -d"	
+        sh "docker-compose -f ~/app/node-multiplayer-snake/docker-compose.yml up -d"	
     }
     
     /*stage('DAST')
