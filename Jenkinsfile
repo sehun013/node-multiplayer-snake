@@ -28,6 +28,8 @@ node ('agent1'){
   
     
     stage('Pull-image-server') {
+        echo "ok until this"
+        echo "${env.PATH}"
          sh "docker-compose restart node-multiplayer-snake_snake_1"
          //sh "docker-compose up -d"	
     }
