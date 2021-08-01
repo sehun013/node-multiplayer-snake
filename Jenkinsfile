@@ -28,7 +28,6 @@ node ('master'){
   
     
     stage('Pull-image-server') {
-        sh "cd /root/app-test/node-multiplayer-snake"
          sh "docker-compose down"
          sh "docker-compose up -d"	
     }
