@@ -1,4 +1,4 @@
-node ('master'){  
+node ('agent1'){  
     def app
     
     stage('Cloning Git') {
