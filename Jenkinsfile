@@ -1,6 +1,8 @@
 pipeline {
-node ('agent1'){  
+    agent any
     def app
+    stages {
+node ('agent1'){  
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
@@ -36,7 +38,7 @@ node ('agent1'){
         {
         build 'SECURITY-DAST-OWASP_ZAP'
         }*/
-    
+    }
     post {
         success {
             slackSend (channel: '#jenkins', color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
