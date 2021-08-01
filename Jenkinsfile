@@ -2,7 +2,7 @@ node ('master'){
     def app
     environment {
 
-    path = "/root/app-test/node-multiplayer-snake"
+    a = '/root/app-test/node-multiplayer-snake'
 
     }
     stage('Cloning Git') {
@@ -32,7 +32,7 @@ node ('master'){
   
     
     stage('Pull-image-server') {
-        sh "cd ${path}"
+        sh "cd ${a}"
          sh "docker-compose down"
          sh "docker-compose up -d"	
     }
