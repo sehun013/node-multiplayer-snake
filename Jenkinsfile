@@ -4,9 +4,9 @@ node ('agent1'){
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
-    /*stage('SAST'){
-        build 'SECURITY-SAST-SNYK'
-    }*/
+    stage('SAST'){
+        build 'SAST-SNYK'
+    }
     stage('Start') {
         slackSend (channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
