@@ -13,7 +13,7 @@ const ServerConfig = {
         DEFAULT_AMOUNT: 25,
         NORMAL: {
             TYPE: 'NORMAL',
-            COLOR: 'yellow',
+            COLOR: 'red',
             POINTS: 1,
             GROWTH: 1,
         },
