@@ -8,7 +8,12 @@ node ('agent1'){
     /*stage('SAST'){
         build 'SECURITY-SAST-SNYK'
     }*/
-
+    stage('Start') {
+            agent any
+            steps {
+                slackSend (channel: '#migrator', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            }
+    }
     
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
@@ -35,5 +40,14 @@ node ('agent1'){
         {
         build 'SECURITY-DAST-OWASP_ZAP'
         }*/
+    
+    post {
+        success {
+            slackSend (channel: '#migrator', color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        }
+        failure {
+            slackSend (channel: '#migrator', color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        }
+    }
  
 }
