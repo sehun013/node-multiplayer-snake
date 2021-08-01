@@ -9,10 +9,7 @@ node ('agent1'){
         build 'SECURITY-SAST-SNYK'
     }*/
     stage('Start') {
-            agent any
-            steps {
-                slackSend (channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-            }
+        slackSend (channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
     
     stage('Build-and-Tag') {
