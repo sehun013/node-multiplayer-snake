@@ -1,10 +1,10 @@
 node ('master'){  
     def app
-    
     environment {
-        PATH = "$PATH:/usr/local/bin"
+
+    path = "/root/app-test/node-multiplayer-snake"
+
     }
-    
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
@@ -32,7 +32,7 @@ node ('master'){
   
     
     stage('Pull-image-server') {
-    
+        sh "cd ${path}"
          sh "docker-compose down"
          sh "docker-compose up -d"	
     }
