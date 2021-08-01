@@ -3,14 +3,13 @@ node ('agent1'){
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
-    }  
-    stage('SAST'){
-        build 'SAST-SNYK'
-    }
+    } 
     stage('Start') {
         slackSend (channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
-    
+     stage('SAST'){
+        build 'SAST-SNYK'
+    }
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
