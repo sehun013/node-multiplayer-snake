@@ -28,7 +28,7 @@ node ('agent1'){
   
     
     stage('Pull-image-server') {
-         sh "docker-compose down node-multiplayer-snake_snake_1"
+         sh "docker-compose restart node-multiplayer-snake_snake_1"
          //sh "docker-compose up -d"	
     }
     
