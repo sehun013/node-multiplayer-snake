@@ -3,7 +3,7 @@ node {
     checkout scm 
   }  //#1
   stage('Scanner') {
-    def scannerHome = tool 'SonaQube Scanner';
+    def scannerHome = tool 'Scanner';
     withSonarQubeEnv('SonarServer') { 
       sh "${scannerHome}/bin/sonar-scanner"
     }
