@@ -9,7 +9,16 @@ node {
                         def scannerHome = tool 'Scanner';
                         withSonarQubeEnv('SonarServer') { 
                             sh "${scannerHome}/bin/sonar-scanner"
+          
                         }
+                    }
+                    stage ('Setup NodeJs'){
+                        def nodejsHome = tool 'nodejs_test'
+                        env.NODE_HOME = "${nodejsHome}"
+                        env.PATH = "${nodejsHome}/bin:${env.PATH}"
+                        sh 'which node'
+                        sh 'node -v'
+                        sh 'npm -v'
                     }
                     stage('Build docker image') {
                         tools {nodejs "nodejs_test"}
