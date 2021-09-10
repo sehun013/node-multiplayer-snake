@@ -12,7 +12,7 @@ node {
                         }
                     }
                     stage('Build docker image') {
-                        tools {nodejs "nodejs"}
+                        tools {nodejs "nodejs_test"}
                         app = docker.build("fivebird/imagename")
                     }
                     stage('Push docker image to dockerhub') {
