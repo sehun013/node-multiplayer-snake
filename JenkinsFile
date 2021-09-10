@@ -1,0 +1,22 @@
+node {
+                    stage('SCM') {
+                        checkout scm 
+                    }
+                    stage('Start') {
+                        slackSend (channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                    }
+                    stage('Scanner') {
+                        def scannerHome = tool 'Scanner';
+                        withSonarQubeEnv('SonarServer') { 
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
+                    }
+                    stage('Build docker image') {
+                        app = docker.build("fivebird/imagename")
+                    }
+                    stage('Push docker image to dockerhub') {
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            app.push("${env.BUILD_NUMBER}")
+                        }
+                    }
+                }
