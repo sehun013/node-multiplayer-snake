@@ -10,8 +10,9 @@
     "start": "node app.js",
     "pretest": "eslint .",
     "test": "mocha",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
-    
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -27,10 +28,12 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "less-middleware": "^2.1.0",
+    "less-middleware": "^3.0.0",
     "serve-favicon": "^2.3.0",
-    "socket.io": "^1.4.6",
-    "validator": "^5.4.0"
+    "socket.io": "^3.0.0",
+    "validator": "^13.7.0",
+    "@snyk/protect": "latest"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
